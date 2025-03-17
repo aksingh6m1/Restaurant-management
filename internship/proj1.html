@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="bg-white p-6 rounded-lg shadow-md w-96">
+    <h1 class="text-2xl font-bold text-center mb-4">Calculator</h1>
+    <input 
+      id="result" 
+      type="text" 
+      class="w-full p-3 border rounded mb-4 text-right text-lg" 
+      placeholder="0" 
+      readonly 
+    />
+    <div class="grid grid-cols-4 gap-2">
+      <!-- Buttons -->
+      <button class="bg-gray-200 p-4 text-lg font-bold rounded" onclick="clearResult()">C</button>
+      <button class="bg-gray-200 p-4 text-lg font-bold rounded" onclick="appendToResult('(')">(</button>
+      <button class="bg-gray-200 p-4 text-lg font-bold rounded" onclick="appendToResult(')')">)</button>
+      <button class="bg-orange-400 text-white p-4 text-lg font-bold rounded" onclick="appendToResult('/')">÷</button>
+
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('7')">7</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('8')">8</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('9')">9</button>
+      <button class="bg-orange-400 text-white p-4 text-lg font-bold rounded" onclick="appendToResult('*')">×</button>
+
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('4')">4</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('5')">5</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('6')">6</button>
+      <button class="bg-orange-400 text-white p-4 text-lg font-bold rounded" onclick="appendToResult('-')">−</button>
+
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('1')">1</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('2')">2</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('3')">3</button>
+      <button class="bg-orange-400 text-white p-4 text-lg font-bold rounded" onclick="appendToResult('+')">+</button>
+
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded col-span-2" onclick="appendToResult('0')">0</button>
+      <button class="bg-gray-300 p-4 text-lg font-bold rounded" onclick="appendToResult('.')">.</button>
+      <button class="bg-green-400 text-white p-4 text-lg font-bold rounded" onclick="calculateResult()">=</button>
+    </div>
+  </div>
+
+  <script>
+    const resultInput = document.getElementById('result');
+
+    function appendToResult(value) {
+      resultInput.value += value;
+    }
+
+    function clearResult() {
+      resultInput.value = '';
+    }
+
+    function calculateResult() {
+      try {
+        resultInput.value = eval(resultInput.value);
+      } catch {
+        resultInput.value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
